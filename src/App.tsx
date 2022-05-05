@@ -13,11 +13,12 @@ function App() {    console.log("App Rendering")
     let [ratingValue, setRatingValue] = useState(0)
     let [accordionCollapsed, setAccordionCollapsed] = useState(false)
     const [onValue, setOnValue] = useState<boolean>(true);
+    let [title, setTitle] = useState('')
 
     return (
     <div>
-        <OnOff onValue={onValue} setOnValue={setOnValue}/>
-        <UncontrolledOnOff/>
+        {/*<OnOff onValue={onValue} setOnValue={setOnValue}/>*/}
+        <UncontrolledOnOff onChange={setOnValue}/> {onValue.toString()}
 
         <UncontrolledAccordion title={"Respect"} />
         <Accordion title='NewAccordion'
@@ -26,12 +27,12 @@ function App() {    console.log("App Rendering")
         <UncontrolledRating/>
         <Rating value={ratingValue}
                 onClick={setRatingValue}/>
-
-
+        <><input onChange={(event => setTitle(event.currentTarget.value))}/>--actual value--{title}</>
 
     </div>
   );
 }
+
 
 type AppTitlePropsType = {
     title: string

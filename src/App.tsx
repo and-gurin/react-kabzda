@@ -14,6 +14,8 @@ function App() {    console.log("App Rendering")
     let [accordionCollapsed, setAccordionCollapsed] = useState(false)
     const [onValue, setOnValue] = useState<boolean>(true);
     let [title, setTitle] = useState('')
+    let [value, setValue] = useState(true)
+    let [select, setSelect] = useState('2')
 
     return (
     <div>
@@ -27,7 +29,14 @@ function App() {    console.log("App Rendering")
         <UncontrolledRating/>
         <Rating value={ratingValue}
                 onClick={setRatingValue}/>
-        <><input onChange={(event => setTitle(event.currentTarget.value))}/>--actual value--{title}</>
+        <><input value={title} onChange={(event => setTitle(event.currentTarget.value))}/>--actual value--{title}</>
+        <><input type="checkbox" checked={value} onChange={(event => setValue(event.currentTarget.checked))}/>--actual value--{+value}</>
+        <select value={select} onChange={(event => setSelect(event.currentTarget.value))}>
+        <option>none</option>
+        <option value={"1"}>Ira</option>
+        <option value={"2"}>Sofia</option>
+        <option value={"3"}>Roma</option>
+        </select>
 
     </div>
   );
